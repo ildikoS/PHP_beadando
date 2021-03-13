@@ -1,6 +1,6 @@
 <?php
-
-//
+require_once('menu.php');
+require_once('lista.php');
 
 ?>
 
@@ -14,17 +14,13 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1><span class="highlight">NemKoViD</span> - Nemzeti Koronavírus Depó</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Bejelentkezés</a></li>
-                <li><a href="about.html">Regisztráció</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<?php if($admin): ?>
+    <?php adminFunctions() ?>
+<?php elseif($bejelentkezve): ?>
+    <?php kijelentkezes() ?>
+<?php else: ?>
+    <?php bejelentkezes() ?>
+<?php endif ?>
 
 <section>
     <div class="container">
@@ -33,17 +29,8 @@
     </div>
 </section>
 
-<section>
-    <table>
+<?php lista($bejelentkezve) ?>
 
-    </table>
-</section>
-
-
-
-<footer>
-    <p>NemKoViD, Copyright &copy; 2020</p>
-</footer>
-
+<?php footer() ?>
 </body>
 </html>
